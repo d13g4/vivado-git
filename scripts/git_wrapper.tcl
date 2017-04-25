@@ -45,6 +45,8 @@ namespace eval ::git_wrapper {
         puts $file [current_project].ip_user_files
         puts $file [current_project].runs
         puts $file [current_project].sim
+        puts $file [current_project].xpr
+        puts $file *.log
         close $file
 
         # Initialize the repo
@@ -54,6 +56,13 @@ namespace eval ::git_wrapper {
 
     proc git_commit {args} {
         # Get project name
+
+	if {[string compare -nocase $args "commit"]} then
+	{
+	    puts "git commit requires -m flag, aborted"
+	    return 1;
+	}
+
         set proj_file [current_project].tcl
 
         # Generate project and add it

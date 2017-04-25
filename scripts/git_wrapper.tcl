@@ -57,10 +57,11 @@ namespace eval ::git_wrapper {
     proc git_commit {args} {
         # Get project name
 
-	if {[string compare -nocase $args "commit"]} then
-	{
+	if {
+	    [string compare -nocase $args "commit"] == 0
+	} then {
 	    puts "git commit requires -m flag, aborted"
-	    return 1
+	    return
 	}
 
         set proj_file [current_project].tcl

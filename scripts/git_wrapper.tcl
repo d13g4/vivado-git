@@ -19,7 +19,8 @@ namespace eval ::git_wrapper {
         set command [lindex $args 0]
 
         # Change directory project directory if not in it yet
-        set proj_dir [regsub {\/work$} [get_property DIRECTORY [current_project]] {}]
+#        set proj_dir [regsub {\/work$} [get_property DIRECTORY [current_project]] {}]
+        set proj_dir [get_property DIRECTORY [current_project]]
         set current_dir [pwd]
         if {
             [string compare -nocase $proj_dir $current_dir]
@@ -39,7 +40,11 @@ namespace eval ::git_wrapper {
     proc git_init {args} {
         # Generate gitignore file
         set file [open ".gitignore" "w"]
-        puts $file "work/*"
+        puts $file [current_project].cache
+        puts $file [current_project].hw
+        puts $file [current_project].ip_user_files
+        puts $file [current_project].runs
+        puts $file [current_project].sim
         close $file
 
         # Initialize the repo

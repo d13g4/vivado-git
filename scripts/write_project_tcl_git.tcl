@@ -392,7 +392,7 @@ proc wr_create_project { proj_dir name part_name } {
   # set target project directory path if specified. If not, create project dir in current dir.
   set target_dir $a_global_vars(s_target_proj_dir)
   if { {} == $target_dir } {
-    set tcl_cmd "create_project $name \$origin_dir/work -part $part_name -quiet -force"
+    set tcl_cmd "create_project $name ./$name -part $part_name -force"
   } else {
     # is specified target proj dir == current dir?
     set cwd [file normalize [string map {\\ /} [pwd]]]

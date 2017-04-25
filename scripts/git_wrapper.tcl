@@ -60,7 +60,7 @@ namespace eval ::git_wrapper {
 	if {[string compare -nocase $args "commit"]} then
 	{
 	    puts "git commit requires -m flag, aborted"
-	    return 1;
+	    return 1
 	}
 
         set proj_file [current_project].tcl

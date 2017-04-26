@@ -326,6 +326,13 @@ proc wr_create_project { proj_dir name part_name } {
   lappend l_script_data "# Set the reference directory for source file relative paths (by default the value is script directory path)"
   lappend l_script_data "set origin_dir \[file dirname \[info script\]\]"
   lappend l_script_data ""
+  lappend l_script_data "# Change current directory to project folder"
+  lappend l_script_data "cd \[file dirname \[info script\]\]"
+  lappend l_script_data ""
+  lappend l_script_data "# Save old sources"
+  lappend l_script_data "file delete -force $name.srcs.backup"
+  lappend l_script_data "file rename $name.srcs $name.srcs.backup"
+  lappend l_script_data ""
   set var_name "origin_dir_loc"
   lappend l_script_data "# Use origin directory path location variable, if specified in the tcl shell"
   lappend l_script_data "if \{ \[info exists ::$var_name\] \} \{"
@@ -392,7 +399,7 @@ proc wr_create_project { proj_dir name part_name } {
   # set target project directory path if specified. If not, create project dir in current dir.
   set target_dir $a_global_vars(s_target_proj_dir)
   if { {} == $target_dir } {
-    set tcl_cmd "create_project $name ./$name -part $part_name -force"
+    set tcl_cmd "create_project $name . -part $part_name -force"
   } else {
     # is specified target proj dir == current dir?
     set cwd [file normalize [string map {\\ /} [pwd]]]
@@ -408,6 +415,10 @@ proc wr_create_project { proj_dir name part_name } {
     set tcl_cmd "$tcl_cmd -ip"
   }
   lappend l_script_data $tcl_cmd
+
+  lappend l_script_data "# Restore old sources"
+  lappend l_script_data "file delete -force $name.srcs"
+  lappend l_script_data "file rename $name.srcs.backup $name.srcs"
 
   if { $a_global_vars(b_arg_dump_proj_info) } {
     puts $a_global_vars(dp_fh) "project_name=$name"
@@ -602,9 +613,6 @@ proc wr_runs { proj_dir proj_name } {
 
   lappend l_script_data "# set the current impl run"
   lappend l_script_data "current_run -implementation \[get_runs [current_run -implementation]\]"
-  lappend l_script_data ""
-  lappend l_script_data "# Change current directory to project folder"
-  lappend l_script_data "cd \[file dirname \[info script\]\]"
 }
 
 proc wr_proj_info { proj_name } {

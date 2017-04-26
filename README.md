@@ -48,3 +48,6 @@ Vivado is a pain in the ass to source control decently, so these scripts provide
  5. All other Git commands (`git push`, `git branch`, etc) should work from TCL console as usual.
 
  6. When opening the project after a cloning, do it by using `Tools -> Run Tcl Script...` and selecting the `PROJECT_NAME.tcl` file created earlier. This will regenerate the project so that you can continue working.
+
+
+TODO: Take care about SDK files (project_name.sdk/). Some of them are text but some others are binary.

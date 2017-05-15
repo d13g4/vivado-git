@@ -47,7 +47,8 @@ namespace eval ::git_wrapper {
         puts $file [current_project].sim
         puts $file [current_project].xpr
         puts $file *.log
-        close $file
+		puts $file *.jou
+		close $file
 
         # Initialize the repo
         exec git {*}$args

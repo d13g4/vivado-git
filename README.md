@@ -18,7 +18,7 @@ Add `init.tcl` (or append the relevant lines if you already have something in it
 
 ### Installation in Linux
 
-Add 'init.tcl' (or append the relevant lines if you already have something in it) along with the 'scripts' directory to your Vivado installation  directory, to the scripts section (Example: Vivado/2016.3/scripts).
+Add `init.tcl` (or append the relevant lines if you already have something in it) along with the `scripts` directory to your Vivado installation  directory, to the scripts section (Example: `Vivado/201x.x/scripts`).
 
 ### How it works
 

@@ -1,11 +1,15 @@
 ﻿# vivado-git
 
-Trying to make Vivado more git-friendly on Windows.
+Trying to make Vivado more git-friendly on Windows and Linux.
 
-### Requirements
+### Requirements for Windows
 
 - [Git for Windows](https://git-scm.com/download/win)
 - Add `C:\Program Files\Git\bin` (or wherever you have your `git.exe`) to your `PATH`
+
+### Requirements for Linux
+
+- Git for Linux
 
 ### Installation
 

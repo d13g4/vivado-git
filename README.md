@@ -7,13 +7,18 @@ Trying to make Vivado more git-friendly on Windows and Linux.
 - [Git for Windows](https://git-scm.com/download/win)
 - Add `C:\Program Files\Git\bin` (or wherever you have your `git.exe`) to your `PATH`
 
+### Installation in Windows
+
+Add `init.tcl` (or append the relevant lines if you already have something in it) along with the `scripts` directory to `%APPDATA%\Roaming\Xilinx\Vivado`.
+
+
 ### Requirements for Linux
 
 - Git for Linux
 
-### Installation
+### Installation in Linux
 
-Add `init.tcl` (or append the relevant lines if you already have something in it) along with the `scripts` directory to `%APPDATA%\Roaming\Xilinx\Vivado`.
+Add 'init.tcl' (or append the relevant lines if you already have something in it) along with the 'scripts' directory to your Vivado installation  directory, to the scripts section (Example: Vivado/2016.3/scripts).
 
 ### How it works
 
